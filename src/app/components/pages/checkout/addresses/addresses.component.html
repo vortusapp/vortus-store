@@ -1,0 +1,113 @@
+<h2 mat-dialog-title>Add an Address to your Address Book</h2><mat-dialog-content>
+  <div class="container">
+  <div class="Addresses">
+
+
+      <div fxLayout="row wrap" class="">
+          <div class="billing-details  pr-15" fxFlex="100" fxFlex.gt-md="100" fxFlex.md="100">
+            <!-- <div class="header-title">
+                <h2>Shipment Details</h2>
+            </div> -->
+
+              <form fxLayout="row wrap" [formGroup]=shippingAddress>
+                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <input matInput
+                            placeholder="First name (required)"
+                            formControlName=firstNameFormControl
+                            >
+                            <mat-error *ngIf="firstNameFormControl.errors?.required">Please enter a valid name</mat-error>
+                           </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                        <input matInput
+                        placeholder="Last name (required)"
+                        formControlName=lastNameFormControl>
+                      <mat-error *ngIf="lastNameFormControl.errors?.required">Please enter a valid name</mat-error>
+                        </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                        <input matInput
+                        placeholder="Company (required)"
+                        formControlName=companyFormControl>
+                      <mat-error *ngIf="companyFormControl.errors?.required">Please enter a valid company</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <input matInput
+                        placeholder="Address (required)"
+                        formControlName=address1FormControl>
+                      <mat-error *ngIf="address1FormControl.errors?.required">Please enter a valid address</mat-error>
+                        </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                    <mat-form-field class="w-100">
+                        <input matInput
+                      placeholder=""
+                      formControlName=address2FormControl
+                      [errorStateMatcher]='matcher'>
+                      </mat-form-field>
+                </div>
+                <div  fxFlex="100" fxFlex.gt-md="50" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                  <mat-form-field class="w-100">
+                    <input matInput
+                    placeholder="Suburb"
+                    formControlName=suburbFormControl
+                    [errorStateMatcher]='matcher'>
+                  <!-- <mat-error *ngIf="cityFormControl.hasError('required')">Please enter a valid city</mat-error> -->
+                </mat-form-field>
+              </div>
+                  <div  fxFlex="100" fxFlex.gt-md="50" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                    <mat-form-field class="w-100">
+                      <input matInput
+                      placeholder="City / Town (required)"
+                      formControlName=cityFormControl
+                      [errorStateMatcher]='matcher'>
+                    <mat-error *ngIf="cityFormControl.errors?.required">Please enter a valid city</mat-error>
+                  </mat-form-field>
+                </div>
+
+                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                        <input matInput
+                        placeholder="Postcode"
+                        formControlName=postcodeFormControl>
+                      </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                    <mat-form-field class="w-100">
+                        <mat-select
+                        placeholder="Country (required)"
+                        formControlName=countryFormControl
+                         name="state">
+                          <mat-option value="NZ">New Zealand</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="countryFormControl.errors?.required">Please enter a valid state/country</mat-error>
+                      </mat-form-field>
+                </div>
+                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                        <input matInput
+                        placeholder="Phone"
+                        formControlName=phoneFormControl>
+                      <!-- <mat-error *ngIf="phoneFormControl.errors?.required">Please enter a valid phone</mat-error> -->
+                        </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                    <mat-checkbox fxFlex="50" class="checkbox" formControlName="isShippingFormControl">Shipping Address</mat-checkbox>
+                    <mat-checkbox fxFlex="50" class="checkbox" formControlName="isBillingFormControl">Billing Address</mat-checkbox>
+                </div>
+
+                  </form>
+              </div>
+          </div>
+    </div>
+</div>
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button mat-button class="btn-project" (click)="onSave()" [disabled]="shippingAddress.invalid">Save</button>
+  <button mat-button class="btn-stroked-project" (click)="onCancel()">Cancel</button>
+</div>

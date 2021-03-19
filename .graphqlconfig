@@ -1,0 +1,12 @@
+{
+  "extensions": {
+    "endpoints": {
+      "Your Hasura GraphQL Engine Endpoint": {
+        "url": "http://localhost:3000/graphql",
+        "headers": {
+    "Authorization": "BzMKuUYXFpnLAOB7N2lwFqcxhNKpyIwQNQnqiFBxyOc.VNfwlBNsJHVhkb4Ud2UNDteThSQeOUk3F37IagnLpRg"
+}
+      }
+    }
+  }
+}

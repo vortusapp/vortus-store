@@ -1,0 +1,98 @@
+<div class="sophia-app" id="mainDIV" style="height: 100vh;overflow: auto;">
+
+<mat-sidenav-container fullscreen>
+
+    <mat-sidenav [opened]="false" mode="over"  #start  class="sidenav">
+        <button mat-icon-button color="warn" class="close" (click)="start.close()">
+          <mat-icon color="warn">close</mat-icon>
+        </button>
+        <div class="divider"></div>
+        <div class="sidebar-items" fxLayout="column" >
+            <app-sidebar *ngFor="let item of navItems" [item]="item"></app-sidebar>
+        </div>
+    </mat-sidenav>
+    <mat-toolbar class="main-topbar" [ngClass]="{topbar_four: url == '/home/four'}">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center" class="top-bar container" >
+                <span fxHide="false" fxHide.gt-sm   >
+                    <button mat-icon-button (click)="start.toggle()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                 </span>
+             <div fxLayout="row" class="welcome-message">
+               <div class="widget-text">
+                 <a href="mailto:info@vortus.co.nz">
+                   <i class="fa fa-paper-plane fa-sm>"></i><span class="ml-5">  info@vortus.co.nz</span>
+                 </a>
+
+              </div>
+              <div class="widget-text ml-10">
+                <a href="tel:+6448881444">
+                  <i class="fa fa-phone fa-sm"></i><span class="ml-5">  +64 4 888 1444</span>
+                </a>
+
+              </div>
+            <!--     <div class="widget-text">
+                  <a mat-button [matMenuTriggerFor]="currencyMenu" #currencyMenuTrigger="matMenuTrigger">
+                    {{currency}}<mat-icon class="mat-icon-sm caret cur-icon">arrow_drop_down</mat-icon>
+                  </a>
+                  <mat-menu #currencyMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
+                    <span>
+                        <button mat-menu-item *ngFor="let cur of currencies" (click)="changeCurrency(cur)">
+                            <span>{{cur}}</span>
+                        </button>
+                    </span>
+                </mat-menu>
+                </div>
+                <div class="widget-text">
+                  <a mat-button [matMenuTriggerFor]="langMenu" #langMenuTrigger="matMenuTrigger">
+                    <img [src]="flag.image" width="18">
+                    <span fxShow="false" fxShow.gt-sm class="flag-menu-title">{{flag.name}}</span>
+                    <mat-icon class="mat-icon-sm caret cur-icon">arrow_drop_down</mat-icon>
+                </a>
+                <mat-menu #langMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
+                    <span>
+                        <button mat-menu-item *ngFor="let flag of flags" (click)="changeLang(flag)">
+                            <img [src]="flag.image" width="18"> {{flag.name}}
+                        </button>
+                    </span>
+                </mat-menu>
+                </div> -->
+              </div>
+              <div class="widgets-left" fxLayout="row">
+
+
+                <div class="widget-text">
+                    <a fxShow="false" fxShow.gt-xs  [matMenuTriggerFor]='accountMenu' *ngIf=(isLoggedIn)>
+                      <span><mat-icon>person</mat-icon>
+                        <span *ngIf="!userFirstName">My Account</span>
+                        <span *ngIf="userFirstName">{{userFirstName}} {{userLastName}}</span>
+                      </span>
+                    </a>
+                    <a fxShow="true" fxShow.gt-xs (click)='onLogin()'*ngIf=(!isLoggedIn)>Login</a>
+                    <mat-menu #accountMenu='matMenu' xPosition="before">
+                      <button mat-menu-item [routerLink]="['/pages/account-details']"*ngIf=(!isLoggedIn)>Account Details</button>
+                      <button mat-menu-item *ngIf=(isLoggedIn)>Orders History</button>
+                      <button mat-menu-item (click)='onRefresh()' *ngIf=(isLoggedIn)>Addresses</button>
+                      <button mat-menu-item (click)='onLogin()'*ngIf=(isLoggedIn)>Login</button>
+                      <button mat-menu-item (click)='onLogout()' *ngIf=(isLoggedIn)>Logout</button>
+                    </mat-menu>
+
+                    <!-- </a> -->
+                  </div>
+              </div>
+
+
+
+
+        </mat-toolbar-row>
+
+      </mat-toolbar>
+    <app-header *ngIf=(finishedLogging)></app-header>
+    <ngx-spinner></ngx-spinner>
+
+<router-outlet (activate)="onActivate($event)" *ngIf=(finishedLogging)></router-outlet>
+<app-footer></app-footer>
+
+
+</mat-sidenav-container>
+</div>

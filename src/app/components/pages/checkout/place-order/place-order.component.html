@@ -1,0 +1,164 @@
+
+  <div class="place-order ">
+
+
+
+
+        <!-- <div fxLayout="row wrap" class="mt-20">-->
+          <div class="mainOrder-wrapper " fxFlex="100" fxFlex.gt-md="100" fxFlex.md="100">
+            <div class="main-order " >
+              <div class="title">
+                  <h3>Your Order</h3>
+              </div>
+              <div class="order-box">
+
+                  <div class="title-box">
+                      <div>Product <span class="tl-amount"> Price <small>(+gst)</small></span></div>
+                  </div>
+                  <ul class="price-list" *ngIf='buyProducts.length'>
+                    <li *ngFor="let item of buyProducts">
+                       {{item?.node.productVendor}} - {{ item?.node.variantTitle }}  × {{ item.node.quantity }}
+
+                      <span>
+                       {{ item?.node.subtotal.amount | currency:productService?.currency:'symbol' }}
+                        </span>
+                    </li>
+                </ul>
+                <ul class="quantity" *ngIf='buyProducts.length <= 0'>
+                  <li class="empty-checkout"> There are no products in cart </li>
+                 </ul>
+                <ul class="total-amount">
+                  <li>
+                    Subtotal <span class="amount">
+                      {{ cartSubtotal | currency:productService?.currency:'symbol'}}
+                    </span>
+                  </li>
+                  <li *ngIf='buyProducts.length'>
+                    Shipping
+
+                        <span class="amount">{{freightCharges | currency:productService?.currency:'symbol'}}</span>
+
+                  </li>
+                  <li *ngIf='buyProducts.length'>
+                    GST
+                        <span class="amount">{{taxSummary?.tax.amount | currency:productService?.currency:'symbol'}}</span>
+
+                  </li>
+              </ul>
+              <ul class="total">
+                <li>Total
+                  <span class="count">
+                    {{ checkoutItems?.summary.total.amount | currency:productService?.currency:'symbol'}}
+
+                  </span></li>
+            </ul>
+            <div class="title-box">
+              <div>Payment Method </div>
+          </div>
+            <ul class="total">
+              <mat-radio-group>
+                <li *ngFor="let payment of paymentMethods">
+                  <mat-radio-button fxLayout="column"  [value]="payment">{{payment.displayName}}</mat-radio-button>
+
+                </li>
+                </mat-radio-group>
+            </ul>
+
+
+
+            <div fxLayout="row"  fxLayoutGap="16px" class="address-group" >
+              <div fxFlex="50%">
+                <mat-card class="address-card">
+
+                  <mat-card-header class="address-type-box">
+                    <mat-card-title class="subtitle-box">
+                        Shipping Address
+                    </mat-card-title>
+
+
+
+                  </mat-card-header>
+                  <button *ngIf=(!shippingAddress) mat-button class="add-button" (click)='addAddress("shipping")'><mat-icon>add</mat-icon></button>
+                  <mat-card-content  *ngIf=(shippingAddress)>
+                    <ul class="address-box">
+                      <li>{{shippingAddress.company}}</li>
+                    </ul>
+
+                      <ul>
+                        <li *ngIf=(shippingAddress.fullName)>{{shippingAddress.fullName}}</li>
+                      <li *ngIf=(shippingAddress.address1)>{{shippingAddress.address1}}</li>
+                      <li *ngIf=(shippingAddress.address2)>{{shippingAddress.address2}}</li>
+                      <li *ngIf=(shippingAddress.region)>{{shippingAddress.region}}</li>
+                      <li *ngIf=(shippingAddress.city)>{{shippingAddress.city}} <span *ngIf=(shippingAddress.postal)>{{shippingAddress.postal}}</span></li>
+                      <li *ngIf=(shippingAddress.country)>{{shippingAddress.country}}</li>
+                    </ul>
+
+
+                  </mat-card-content>
+
+                  </mat-card>
+              </div>
+              <div fxFlex="50%">
+                <mat-card class="address-card" >
+
+                  <mat-card-header class="address-type-box">
+                    <mat-card-title class="subtitle-box">
+                        Billing Address
+                    </mat-card-title>
+
+                  </mat-card-header>
+
+                  <button *ngIf=(!billingAddress) mat-button class="add-button" (click)='addAddress("billing")'><mat-icon>add</mat-icon></button>
+                  <mat-card-content *ngIf=(billingAddress)>
+                    <ul class="address-box">
+                      <li>{{shippingAddress.company}}</li>
+                    </ul>
+
+                      <ul>
+                        <li *ngIf=(shippingAddress.fullName)>{{billingAddress.fullName}}</li>
+                      <li *ngIf=(shippingAddress.address1)>{{billingAddress.address1}}</li>
+                      <li *ngIf=(shippingAddress.address2)>{{billingAddress.address2}}</li>
+                      <li *ngIf=(shippingAddress.region)>{{billingAddress.region}}</li>
+                      <li *ngIf=(shippingAddress.city)>{{billingAddress.city}} <span *ngIf=(billingAddress.postal)>{{shippingAddress.postal}}</span></li>
+                      <li *ngIf=(shippingAddress.country)>{{billingAddress.country}}</li>
+                    </ul>
+
+
+                  </mat-card-content>
+
+                  </mat-card>
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  </div>
+                  <div class="break"></div>
+
+
+            <div class="order">
+              <button class="btn-project" mat-raised-button color="accent" type="button" (click)="onPlaceOrder()">PLACE ORDER</button>
+            </div>
+
+               </div>
+          </div>
+          </div>
+
+       </div>
+

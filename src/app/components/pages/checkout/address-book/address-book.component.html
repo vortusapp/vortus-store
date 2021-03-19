@@ -1,0 +1,69 @@
+<div class="address-book ">
+  <div class="sec-spacing">
+
+
+    <div fxLayout="row wrap" fxLayoutGap="16px grid" >
+      <ng-container *ngFor="let address of addressBook; let index = i">
+        <div   fxFlex.gt-sm="50%" fxFlex.lt-md="100%">
+          <!-- fxFlex.gt-md="100" fxFlex.md="100" -->
+          <!-- <div class="header-title">
+              <h2>Shipment Details</h2>
+          </div> -->
+
+            <mat-card class="address-card" (click)=onChooseShipping(address)>
+            <mat-card-header>
+              <mat-card-title class="title-box">
+                {{address.addressName}}
+              </mat-card-title>
+              <mat-icon aria-hidden="false" class="check-circle" aria-label="active address" *ngIf="address === shippingAddress">check_circle</mat-icon>
+              <button mat-button class="address-options-button" [matMenuTriggerFor]="addressOptionsMenu">
+                <mat-icon aria-hidden="false" class="options-icon" aria-label="settings" >dehaze</mat-icon>
+              </button>
+              <mat-menu #addressOptionsMenu="matMenu" xPosition="before" class="address-options-menu">
+                <button mat-menu-item>Edit</button>
+                <button mat-menu-item (click)=onDeleteAddress(address._id)>Delete</button>
+                <button mat-menu-item>Make Default</button>
+
+
+              </mat-menu>
+
+
+              <mat-card-subtitle>{{address.company}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+
+                <ul class="address-body">
+                  <li *ngIf=(address.fullName)>{{address.fullName}}</li>
+                <li *ngIf=(address.address1)>{{address.address1}}</li>
+                <li *ngIf=(address.address2)>{{address.address2}}</li>
+                <li *ngIf=(address.region)>{{address.region}}</li>
+                <li *ngIf=(address.city)>{{address.city}} <span *ngIf=(address.postal)>{{address.postal}}</span></li>
+                <li *ngIf=(address.country)>{{address.country}}</li>
+              </ul>
+
+
+            </mat-card-content>
+
+            </mat-card>
+
+
+
+          </div>
+        </ng-container>
+          <div class="break"></div>
+          <div><button mat-button class="add-button" (click)='addAddress()'><mat-icon>add</mat-icon></button></div>
+    </div>
+
+
+
+
+
+    <mat-toolbar class="toolbar">
+      <span class="example-spacer"></span>
+      <button mat-button class="btn-stroked-project" (click)='onNext()'>Next</button>
+
+    </mat-toolbar>
+
+</div>
+</div>
+
