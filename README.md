@@ -1,16 +1,18 @@
 ## Prerequsites
-
+NodeJS
 Angular 7.3.1
-Reaction Commerce
-https://github.com/reactioncommerce/reaction
-
-
+Reaction Commerce  https://github.com/reactioncommerce/reaction
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
+
+## Install
+
+Clone Repo
+Run NPM Install
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
+Run Make on your Reaction Commerce folder to spin up the back end.
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
